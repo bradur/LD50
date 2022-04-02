@@ -20,13 +20,9 @@ public class HookProjectile : MonoBehaviour
     public void Shoot(Vector2 target)
     {
         targetPos = target;
-        // rotate towards target
         rb.gameObject.SetActive(true);
-        //Vector3 rotation = rb.transform.eulerAngles;
-        //rotation.z = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x) * Mathf.Rad2Deg;
-        //rb.transform.eulerAngles = rotation;
+
         rb.transform.right = new Vector3(target.x, target.y, 0f) - rb.transform.position;
-        //Vector2 dir = (target - (Vector2)transform.position).normalized;
         rb.AddForce(rb.transform.right * projectilespeed, ForceMode2D.Impulse);
         isPast = false;
         isShot = true;

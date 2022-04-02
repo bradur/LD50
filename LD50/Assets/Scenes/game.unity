@@ -342,6 +342,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6592500870965975785, guid: 08d213d47abb3bd4fa69d065907e5cfe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08d213d47abb3bd4fa69d065907e5cfe, type: 3}
 --- !u!4 &1880432599 stripped
@@ -403,6 +407,10 @@ PrefabInstance:
     - target: {fileID: 119788891886584123, guid: 10eb9485de396994d8fe990820814f24, type: 3}
       propertyPath: m_Name
       value: World
+      objectReference: {fileID: 0}
+    - target: {fileID: 119788892617032194, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5152353824739923157, guid: 10eb9485de396994d8fe990820814f24, type: 3}
       propertyPath: zoomDuration

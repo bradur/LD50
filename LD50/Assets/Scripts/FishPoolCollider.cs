@@ -7,9 +7,12 @@ public class FishPoolCollider : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
     private FishPool pool;
+    [SerializeField]
+    private SpriteMask mask;
     public void Initialize(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
+        mask.sprite = sprite;
         gameObject.AddComponent<PolygonCollider2D>();
         pool = GetComponentInParent<FishPool>();
     }
