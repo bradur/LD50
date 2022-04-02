@@ -43,6 +43,14 @@ public class PlayerAnimator : MonoBehaviour
         }
     }
 
+    public void IdleFromFish()
+    {
+        if (ClipIsPlaying("fishingIdle") || ClipIsPlaying("swingRod"))
+        {
+            Idle();
+        }
+    }
+
     public void CastRod()
     {
         animator.Play("swingRod");

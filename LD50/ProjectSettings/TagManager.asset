@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - CanFish
+  - Island
+  - HookProjectile
   - 
   - 
   - 
@@ -49,4 +49,10 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1000755595
+    locked: 0
+  - name: SomeLayer
+    uniqueID: 2777380797
+    locked: 0
+  - name: UI
+    uniqueID: 170411141
     locked: 0

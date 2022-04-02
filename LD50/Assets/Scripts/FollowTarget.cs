@@ -13,9 +13,17 @@ public class FollowTarget : MonoBehaviour
     [SerializeField]
     private bool followZ = false;
 
+    private float smoothTime = 0.1f;
+
     void Start()
     {
 
+    }
+
+    public void SetTarget(Transform target, float smoothTime = 0.1f)
+    {
+        this.smoothTime = smoothTime;
+        this.target = target;
     }
 
     // Update is called once per frame
@@ -35,6 +43,10 @@ public class FollowTarget : MonoBehaviour
         {
             newPos.z = target.position.z;
         }
-        transform.position = newPos;
+        //smoothdamp follow
+        Vector3 velocity = Vector3.zero;
+        transform.position = Vector3.SmoothDamp(transform.position, newPos, ref velocity, smoothTime);
+
+        //transform.position = newPos;
     }
 }
