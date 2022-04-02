@@ -10,66 +10,69 @@ public class CameraZoom : MonoBehaviour
         main = this;
     }
     private float zoom;
-    [SerializeField]
-    private float maxZoom = 0.8f;
-    private float minZoom = 1;
+
+    private float maxSize = 6.5f;
+    private float minSize;
+    private float targetSize;
     private float originalSize;
     [SerializeField]
     private float zoomDuration = 1f;
     private float timer = 0f;
-    private bool zoomIn = false;
-    private bool zoomOut = false;
+    private bool zooming = false;
+    private bool zoomApplied = true;
     void Start()
     {
-        zoom = minZoom;
-        originalSize = Camera.main.orthographicSize;
+        minSize = Camera.main.orthographicSize;
+        targetSize = minSize;
+        zoom = minSize;
     }
 
     public void ZoomIn()
     {
-        zoomIn = true;
-        zoomOut = false;
+        originalSize = Camera.main.orthographicSize;
+        timer = 0f;
+        targetSize = maxSize;
+        zooming = true;
     }
 
     public void ZoomOut()
     {
-        zoomOut = true;
-        zoomIn = false;
+        originalSize = Camera.main.orthographicSize;
+        timer = 0f;
+        targetSize = minSize;
+        zooming = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (zoomIn)
+        if (zooming)
         {
             timer += Time.deltaTime;
             if (timer > zoomDuration)
             {
-                zoomIn = false;
-                timer = 0f;
-                zoom = maxZoom;
+                zooming = false;
+                zoom = targetSize;
             }
             else
             {
-                zoom = Mathf.Lerp(minZoom, maxZoom, timer / zoomDuration);
-                Camera.main.orthographicSize = originalSize * zoom;
+                zoom = Mathf.Lerp(originalSize, targetSize, timer / zoomDuration);
             }
+            zoomApplied = false;
         }
-        else if (zoomOut)
-        {
-            timer += Time.deltaTime;
-            if (timer > zoomDuration)
-            {
-                zoomIn = true;
-                timer = 0f;
-                zoom = minZoom;
-            }
-            else
-            {
-                zoom = Mathf.Lerp(maxZoom, minZoom, timer / zoomDuration);
-                Camera.main.orthographicSize = originalSize * zoom;
-            }
-        }
+    }
 
+    void LateUpdate()
+    {
+        AdjustZoom();
+    }
+
+    public void AdjustZoom()
+    {
+        if (zooming || !zoomApplied)
+        {
+            Camera.main.orthographicSize = zoom;
+            zoomApplied = true;
+        }
     }
 }

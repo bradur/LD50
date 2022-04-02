@@ -28,6 +28,11 @@ public class HookProjectile : MonoBehaviour
         isShot = true;
     }
 
+    public void CancelShot()
+    {
+        Kill();
+    }
+
     private void Update()
     {
         if (isShot)

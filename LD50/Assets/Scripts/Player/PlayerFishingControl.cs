@@ -72,7 +72,7 @@ public class PlayerFishingControl : MonoBehaviour
 
     private bool PoolIsCloseEnough()
     {
-        Debug.Log($"Distance: {Vector2.Distance(cachedHit.transform.position, transform.position)}");
+
         return Vector2.Distance(cachedHit.transform.position, transform.position) < maxDistanceFromPool;
     }
 
@@ -108,15 +108,15 @@ public class PlayerFishingControl : MonoBehaviour
 
     void Update()
     {
-        if (isFishing)
+        /*if (isFishing)
         {
-            /*if (!MousePositionIsFishable())
+            if (!MousePositionIsFishable())
             {
                 Debug.Log("Stop because mouse not over pool");
                 StopFishing();
                 PlayerAnimator.main.IdleFromFish();
-            }*/
-        }
+            }
+        }*/
         if (Input.GetMouseButtonDown(0))
         {
             if (isFishing)
@@ -126,6 +126,13 @@ public class PlayerFishingControl : MonoBehaviour
             else
             {
                 CastRod();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isFishing)
+            {
+                HookShooter.main.CancelShot();
             }
         }
     }

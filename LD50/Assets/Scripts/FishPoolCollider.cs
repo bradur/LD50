@@ -32,4 +32,9 @@ public class FishPoolCollider : MonoBehaviour
             pool.StopFishing();
         }
     }
+
+    public void FinishDryingOut()
+    {
+        pool.FinishDryingOut();
+    }
 }

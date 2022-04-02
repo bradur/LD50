@@ -7,22 +7,42 @@ public class SwimmingFish : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
     [SerializeField]
-    private float distanceFromCenter = 10f;
+    private SpriteRenderer fgSprite;
 
     [SerializeField]
-    private float speed = 5f;
+    private float distanceFromCenter = 10f;
 
+    private float speed = 5f;
+    /*
+        [SerializeField]
+        private float maxLifeTime = 10f;*/
+
+    [SerializeField]
+    private GameObject container;
     private Rigidbody2D rb;
-    public void Initialize(FishSpawn spawn)
+    private bool isSwimming = false;
+    private Vector2 target;
+    private FishSpawner spawner;
+    private Fish fish;
+    public void Initialize(Fish spawn)
     {
+        this.fish = spawn;
+        speed = spawn.Speed;
+        isSwimming = false;
+        container.SetActive(true);
         rb = spriteRenderer.GetComponent<Rigidbody2D>();
         spriteRenderer.sprite = spawn.sprite;
-        spriteRenderer.gameObject.AddComponent<PolygonCollider2D>();
+        fgSprite.sprite = spawn.fgSprite;
+        fgSprite.color = spawn.fgColor;
+        spriteRenderer.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
     }
 
-    public void SwimThrough(FishPool fishPool)
+
+    public void SwimThrough(FishPool fishPool, FishSpawner spawner)
     {
-        Vector2 target = fishPool.transform.position;
+        isSwimming = true;
+        this.spawner = spawner;
+        target = fishPool.transform.position;
         Vector2 randomDir = Random.insideUnitCircle.normalized;
         if (randomDir.magnitude < 0.5f)
         { // extremely unlikely
@@ -34,6 +54,36 @@ public class SwimmingFish : MonoBehaviour
         rb.transform.position = newPos;
         rb.transform.right = target - newPos;
         rb.AddForce(rb.transform.right * speed, ForceMode2D.Impulse);
+    }
+
+    private void Update()
+    {
+        if (isSwimming)
+        {
+            if (Vector2.Distance(rb.transform.position, target) > distanceFromCenter)
+            {
+                Debug.Log("Kill cos out");
+                Kill();
+            }
+        }
+    }
+
+    public void TriggerEnter(Collider2D other)
+    {
+
+        HookProjectile projectile = other.gameObject.GetComponentInParent<HookProjectile>();
+        if (projectile != null)
+        {
+            projectile.Kill();
+            Kill();
+        }
+    }
+
+    public void Kill()
+    {
+        isSwimming = false;
+        spawner.FishDied(fish);
+        container.SetActive(false);
     }
 
     void OnDrawGizmos()

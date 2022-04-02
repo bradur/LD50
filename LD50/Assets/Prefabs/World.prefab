@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxZoom: 0.8
-  zoomDuration: 1
+  zoomDuration: 2
 --- !u!1 &119788891661307306
 GameObject:
   m_ObjectHideFlags: 0

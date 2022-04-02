@@ -53,4 +53,6 @@ MonoBehaviour:
     Prefab: {fileID: 4370722732934727433, guid: e31e37456c329d64491739543153a1b4, type: 3}
   - CursorType: 3
     Prefab: {fileID: 3143604234374905335, guid: 3b2915b75183c384d94effeb79a6bc2e, type: 3}
+  - CursorType: 4
+    Prefab: {fileID: 3143604234374905335, guid: c717e3fa091cac34e910e551ead3d550, type: 3}
   defaultCursorType: 0

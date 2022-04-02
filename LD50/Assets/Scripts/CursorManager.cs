@@ -31,7 +31,14 @@ public class CursorManager : MonoBehaviour
         Cursor.visible = false;
         if (PlayerFishingControl.main.IsFishing)
         {
-            Show(CursorType.Target);
+            if (HookShooter.main.CanShoot)
+            {
+                Show(CursorType.Target);
+            }
+            else
+            {
+                Show(CursorType.CantTarget);
+            }
         }
         else if (PlayerFishingControl.main.MousePositionIsFishable())
         {
@@ -120,5 +127,6 @@ public enum CursorType
     Default,
     Fishing,
     CantFishWhileWalking,
-    Target
+    Target,
+    CantTarget,
 }

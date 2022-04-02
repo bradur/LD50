@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e7d16403bab47409ad408381dd6b61, type: 3}
+  m_Name: EasyFishies
+  m_EditorClassIdentifier: 
+  spawn:
+    fishes:
+    - Name: Tiny
+      Amount: 1
+      sprite: {fileID: 593185267, guid: fe581286a50ea3649a59f5aee9739547, type: 3}
+      fgSprite: {fileID: -1701285061, guid: fe581286a50ea3649a59f5aee9739547, type: 3}
+      fgColor: {r: 0, g: 1, b: 0.7935257, a: 1}
+      Speed: 2
+    - Name: Big
+      Amount: 2
+      sprite: {fileID: 1190960135, guid: b87731f136120bf498464f43c925bb3e, type: 3}
+      fgSprite: {fileID: 1509285870, guid: b87731f136120bf498464f43c925bb3e, type: 3}
+      fgColor: {r: 0.8155527, g: 0, b: 1, a: 1}
+      Speed: 5

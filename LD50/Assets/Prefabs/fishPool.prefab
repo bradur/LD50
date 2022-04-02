@@ -88,11 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimmingFishPrefab: {fileID: 5482523700584140783, guid: 88200d63457445a41a39cccacbba8b1d, type: 3}
-  fishes:
-  - sprite: {fileID: 593185267, guid: fe581286a50ea3649a59f5aee9739547, type: 3}
-    Name: BigFish
-  - sprite: {fileID: 21300000, guid: d7464e418161cd64ea8a77cb04e718b5, type: 3}
-    Name: SmallFish
+  config: {fileID: 11400000, guid: cf61745daa4794e469f7ba51440726b5, type: 2}
   spawnInterval: 1
 --- !u!1 &2901836190302826853
 GameObject:

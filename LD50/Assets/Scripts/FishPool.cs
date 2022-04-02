@@ -19,6 +19,7 @@ public class FishPool : MonoBehaviour
 
     [SerializeField]
     private Animator animator;
+
     private void Start()
     {
         Initialize();
@@ -27,7 +28,6 @@ public class FishPool : MonoBehaviour
     {
         Sprite poolSprite = GetRandomPoolSprite();
         poolCollider.Initialize(poolSprite);
-        fishSpawner.Initialize(this);
     }
 
     private Sprite GetRandomPoolSprite()
@@ -37,13 +37,27 @@ public class FishPool : MonoBehaviour
 
     public void StartFishing()
     {
-        animator.Play("poolFishing");
+        fishSpawner.Initialize(this);
+        animator.SetTrigger("fishing");
         fishSpawner.StartSpawning();
     }
 
     public void StopFishing()
     {
-        animator.Play("poolIdle");
+        animator.SetTrigger("stopFishing");
         fishSpawner.StopSpawning();
+    }
+
+    public void DryOut()
+    {
+        animator.SetTrigger("dryOut");
+        fishSpawner.StopSpawning();
+    }
+
+    public void FinishDryingOut()
+    {
+        Debug.Log("Fish have gone!");
+        Camera.main.GetComponent<FollowTarget>().SetTarget(PlayerMovement.main.transform);
+        Destroy(gameObject);
     }
 }

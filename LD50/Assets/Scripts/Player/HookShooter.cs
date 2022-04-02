@@ -18,6 +18,17 @@ public class HookShooter : MonoBehaviour
 
     public bool CanShoot { get { return !isShooting; } }
 
+    public void CancelShot()
+    {
+        if (isShooting)
+        {
+            if (hook)
+            {
+                hook.CancelShot();
+            }
+        }
+    }
+
     public void Shoot(Vector2 pos)
     {
         if (!CanShoot)

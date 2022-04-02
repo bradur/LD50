@@ -15,6 +15,7 @@ public class FollowTarget : MonoBehaviour
 
     private float smoothTime = 0.1f;
 
+    Vector3 newPos;
     void Start()
     {
 
@@ -27,9 +28,16 @@ public class FollowTarget : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        Vector3 newPos = transform.position;
+
+        //smoothdamp follow
+        AdjustCamera();
+    }
+
+    private void AdjustCamera()
+    {
+        newPos = transform.position;
         // follow target
         if (followX)
         {
@@ -43,10 +51,11 @@ public class FollowTarget : MonoBehaviour
         {
             newPos.z = target.position.z;
         }
-        //smoothdamp follow
+    }
+
+    void LateUpdate()
+    {
         Vector3 velocity = Vector3.zero;
         transform.position = Vector3.SmoothDamp(transform.position, newPos, ref velocity, smoothTime);
-
-        //transform.position = newPos;
     }
 }

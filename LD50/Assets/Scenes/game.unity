@@ -342,10 +342,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6592500870965975785, guid: 08d213d47abb3bd4fa69d065907e5cfe, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08d213d47abb3bd4fa69d065907e5cfe, type: 3}
 --- !u!4 &1880432599 stripped
@@ -360,6 +356,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 119788890871297288, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 119788891886584122, guid: 10eb9485de396994d8fe990820814f24, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -407,22 +407,6 @@ PrefabInstance:
     - target: {fileID: 119788891886584123, guid: 10eb9485de396994d8fe990820814f24, type: 3}
       propertyPath: m_Name
       value: World
-      objectReference: {fileID: 0}
-    - target: {fileID: 119788892617032194, guid: 10eb9485de396994d8fe990820814f24, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152353824739923157, guid: 10eb9485de396994d8fe990820814f24, type: 3}
-      propertyPath: zoomDuration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106335292663669503, guid: 10eb9485de396994d8fe990820814f24, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106335292663669503, guid: 10eb9485de396994d8fe990820814f24, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10eb9485de396994d8fe990820814f24, type: 3}

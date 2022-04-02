@@ -5,13 +5,35 @@ using UnityEngine;
 public class SwimmingFishCollider : MonoBehaviour
 {
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        Debug.Log(other.gameObject.name + " collision");
-    }
+    private SwimmingFish swimmingFish;
+
+    private bool isFishable = false;
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.layer == LayerMask.NameToLayer("CanFish"))
+        {
+            Debug.Log("Fish entered pool");
+            isFishable = true;
+        }
+        if (!isFishable)
+        {
+            return;
+        }
+        if (swimmingFish == null)
+        {
+            swimmingFish = GetComponentInParent<SwimmingFish>();
+        }
+        swimmingFish.TriggerEnter(other);
         Debug.Log(other.name + " trigger");
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("CanFish"))
+        {
+            Debug.Log("Fish exited pool");
+            isFishable = false;
+        }
     }
 }
