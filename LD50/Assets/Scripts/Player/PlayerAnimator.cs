@@ -43,6 +43,13 @@ public class PlayerAnimator : MonoBehaviour
         }
     }
 
+    public void CastRod()
+    {
+        animator.Play("swingRod");
+        Debug.Log("swingRod");
+    }
+
+
     private bool ClipIsPlaying(string clipName)
     {
         return animator.GetCurrentAnimatorStateInfo(0).IsName(clipName);
