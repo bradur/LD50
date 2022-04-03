@@ -25,6 +25,10 @@ public class FishSpawnConfig : ScriptableObject
     public void Init()
     {
         spawn.Init(this);
+        foreach (Fish fish in spawn.fishes)
+        {
+            PlayerInventory.main.AddFish(fish);
+        }
     }
 
     [SerializeField]

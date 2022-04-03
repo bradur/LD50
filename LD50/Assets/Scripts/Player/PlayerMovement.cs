@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
         main = this;
     }
     public static PlayerMovement main;
+    [SerializeField]
     private Rigidbody2D rb;
+    public Rigidbody2D RB { get { return rb; } }
     [SerializeField]
     private float moveSpeed = 5f;
     private float moveHorizontal;
@@ -24,11 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private bool turnedRight = true;
 
     //private float minMagnitude = 0.4f;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
 
     void Update()

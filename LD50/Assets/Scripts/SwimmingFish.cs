@@ -84,6 +84,7 @@ public class SwimmingFish : MonoBehaviour
         HookProjectile projectile = other.gameObject.GetComponentInParent<HookProjectile>();
         if (projectile != null)
         {
+            PlayerInventory.main.AddFish(fish);
             projectile.Kill();
             Kill();
         }
