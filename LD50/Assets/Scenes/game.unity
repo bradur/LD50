@@ -199,6 +199,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7677229}
   m_CullTransparentMesh: 1
+--- !u!1 &53187350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53187351}
+  m_Layer: 0
+  m_Name: fishcont
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &53187351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53187350}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2046199822}
+  m_Father: {fileID: 1945719718}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &515329959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,7 +2612,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.2727308, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2046199822}
+  - {fileID: 53187351}
   m_Father: {fileID: 643593213}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2661,11 +2693,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046199821}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.27, y: 0.18999998, z: 0}
   m_LocalScale: {x: 1, y: 3.6666193, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1945719718}
+  m_Father: {fileID: 53187351}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2046199823
@@ -2709,12 +2741,12 @@ SpriteRenderer:
   m_SortingLayerID: 170411141
   m_SortingLayer: 6
   m_SortingOrder: 10
-  m_Sprite: {fileID: 593185267, guid: fe581286a50ea3649a59f5aee9739547, type: 3}
+  m_Sprite: {fileID: 1905607092, guid: 1cf53a5774b2c2e428d3777fb70bc10b, type: 3}
   m_Color: {r: 0.3455565, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 5, y: 1}
+  m_Size: {x: 10, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3005,7 +3037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425986177295874826, guid: 10eb9485de396994d8fe990820814f24, type: 3}
       propertyPath: spawnInterval
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6425986177295874826, guid: 10eb9485de396994d8fe990820814f24, type: 3}
       propertyPath: pooltargetCount
@@ -3073,7 +3105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8783296522048208082, guid: 10eb9485de396994d8fe990820814f24, type: 3}
       propertyPath: originalFishTarget
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8783296522048208082, guid: 10eb9485de396994d8fe990820814f24, type: 3}
       propertyPath: morningRitualDuration

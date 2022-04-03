@@ -17,6 +17,8 @@ public class Hunger : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    int rowSize = 5;
+
     public void Show()
     {
         animator.Play("hungerShow");
