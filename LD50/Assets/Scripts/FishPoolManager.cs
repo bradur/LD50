@@ -65,6 +65,7 @@ public class FishPoolManager : MonoBehaviour
         return config;
     }
 
+    [SerializeField]
     private int pooltargetCount = 4;
     private bool isSpawning = false;
     private float timer = 0f;

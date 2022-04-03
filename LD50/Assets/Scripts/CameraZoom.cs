@@ -73,6 +73,7 @@ public class CameraZoom : MonoBehaviour
         targetSize = skySize;
         zooming = true;
         duration = skyDur;
+        StartButton.main.Enable();
     }
 
     // Update is called once per frame

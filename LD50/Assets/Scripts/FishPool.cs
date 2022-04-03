@@ -34,6 +34,7 @@ public class FishPool : MonoBehaviour
         fishSpawner.Initialize(this, config);
         animator.SetTrigger("fishing");
         fishSpawner.StartSpawning();
+        SoundManager.main.PlaySoundLoop(GameSoundType.FishPool);
     }
 
     public void StopFishing()
@@ -52,6 +53,7 @@ public class FishPool : MonoBehaviour
     {
         Debug.Log("Fish have gone!");
         Camera.main.GetComponent<FollowTarget>().SetTarget(PlayerMovement.main.transform);
+        SoundManager.main.PauseLoop(GameSoundType.FishPool);
         MusicManager.main.PlayMusic(MusicTrackType.Main);
         //StopFishing();
         PlayerFishingControl.main.StopFishing();

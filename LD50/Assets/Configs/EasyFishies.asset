@@ -24,16 +24,36 @@ MonoBehaviour:
       SpeedInPool: 2
       SpeedOutSidePool: 3
       Type: 1
-  intervalMin: 2
-  intervalMax: 6
+    - Name: Barracude
+      Amount: 2
+      SpeedInPool: 9
+      SpeedOutSidePool: 10
+      Type: 2
+    - Name: Bass
+      Amount: 2
+      SpeedInPool: 7
+      SpeedOutSidePool: 9
+      Type: 3
+  intervalMin: 3
+  intervalMax: 7
   fishVisuals:
   - Type: 0
-    sprite: {fileID: 593185267, guid: fe581286a50ea3649a59f5aee9739547, type: 3}
-    fgSprite: {fileID: -1701285061, guid: fe581286a50ea3649a59f5aee9739547, type: 3}
+    sprite: {fileID: 1905607092, guid: 7c9d096bb00a93c4e8d45fba79e44e63, type: 3}
+    fgSprite: {fileID: -807352443, guid: 7c9d096bb00a93c4e8d45fba79e44e63, type: 3}
     fgColor: {r: 0.553, g: 1, b: 0.5798423, a: 1}
     Scale: 0.595
   - Type: 1
-    sprite: {fileID: 593185267, guid: fe581286a50ea3649a59f5aee9739547, type: 3}
-    fgSprite: {fileID: -1701285061, guid: fe581286a50ea3649a59f5aee9739547, type: 3}
+    sprite: {fileID: 1905607092, guid: 7c9d096bb00a93c4e8d45fba79e44e63, type: 3}
+    fgSprite: {fileID: -807352443, guid: 7c9d096bb00a93c4e8d45fba79e44e63, type: 3}
     fgColor: {r: 0.8798433, g: 0.5529412, b: 1, a: 1}
+    Scale: 1
+  - Type: 2
+    sprite: {fileID: 378285851, guid: d9a895867a12b4e488a9235a636d7fbe, type: 3}
+    fgSprite: {fileID: -1441417781, guid: d9a895867a12b4e488a9235a636d7fbe, type: 3}
+    fgColor: {r: 0.25, g: 0.7417049, b: 1, a: 1}
+    Scale: 1
+  - Type: 3
+    sprite: {fileID: 2109897779, guid: c2d75bc0a5e6bfa4bbfbe6fcf28e1b43, type: 3}
+    fgSprite: {fileID: 1459988982, guid: c2d75bc0a5e6bfa4bbfbe6fcf28e1b43, type: 3}
+    fgColor: {r: 0.022158027, g: 0.5, b: 0, a: 1}
     Scale: 1

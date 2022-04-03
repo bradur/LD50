@@ -47,6 +47,7 @@ public class SwimmingFish : MonoBehaviour
 
     public void SwimThrough(FishPool fishPool, FishSpawner spawner)
     {
+        SoundManager.main.PlaySound(GameSoundType.Swim);
         isSwimming = true;
         this.spawner = spawner;
         target = fishPool.transform.position;
@@ -79,13 +80,15 @@ public class SwimmingFish : MonoBehaviour
     {
         if (enteredPool)
         {
-            rb.velocity *= (speedInside / speedOutside);
+            //rb.velocity *= (speedInside / speedOutside);
+            rb.velocity = rb.velocity.normalized * speedInside;
             return;
         }
         HookProjectile projectile = other.gameObject.GetComponentInParent<HookProjectile>();
         if (projectile != null)
         {
             PlayerInventory.main.AddFish(fish);
+            SoundManager.main.PlaySound(GameSoundType.Catch);
             projectile.Kill();
             Kill();
         }
@@ -94,7 +97,9 @@ public class SwimmingFish : MonoBehaviour
     public void ExitPool()
     {
         //ExitPool
-        rb.velocity *= (speedOutside / speedInside);
+        //rb.velocity *= (speedOutside / speedInside);
+        //rb.AddForce(rb.transform.right * speedOutside, ForceMode2D.Impulse);
+        rb.velocity = rb.velocity.normalized * speedOutside;
     }
 
     public void Kill()

@@ -107,5 +107,7 @@ public class FishVisual
 public enum FishType
 {
     Small,
-    Big
+    Big,
+    Barracuda,
+    Bass
 }

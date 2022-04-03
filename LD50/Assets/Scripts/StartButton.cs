@@ -22,6 +22,11 @@ public class StartButton : MonoBehaviour
     {
         ui.SetActive(false);
     }
+    public void Enable()
+    {
+        isStarted = false;
+        ui.SetActive(true);
+    }
     public void StartGame()
     {
         if (isStarted)

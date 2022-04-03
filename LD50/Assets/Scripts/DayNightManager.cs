@@ -34,7 +34,7 @@ public class DayNightManager : MonoBehaviour
     private float duration = 0f;
     private float originalIntensity = 0f;
     private float targetIntensity = 0f;
-    private bool isTransition;
+    private bool isTransition = false;
     private bool isNight = true;
     public bool IsNight { get { return isNight; } }
     public bool IsNightFully { get { return !isTransition && isNight; } }
@@ -44,7 +44,10 @@ public class DayNightManager : MonoBehaviour
     [SerializeField]
     private float morningRitualDuration = 0f;
     private int eatFishCount = 0;
-    private int eatFishTarget = 5;
+    private int eatFishTarget = 3;
+    public int EatFishTarget { get { return eatFishTarget; } }
+    [SerializeField]
+    private int originalFishTarget = 3;
     private bool isMorningRitual = false;
     private bool isOver = false;
     private bool zoomStarted = false;
@@ -59,18 +62,26 @@ public class DayNightManager : MonoBehaviour
 
     public void AddStartingFood()
     {
-        PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
-        PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
-        PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
-        PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
-        PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
+        for (int index = 0; index < originalFishTarget; index += 1)
+        {
+            PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
+        }
+        //PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
+        //PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
     }
 
     public void Init()
     {
+        eatFishTarget = originalFishTarget;
+        isNight = true;
+        isTransition = false;
+        dayStarted = false;
         dayIntensity = light2D.intensity;
-
+        eatFishCount = 0;
         initialized = true;
+        zoomStarted = false;
+        isOver = false;
+        PlayerAnimator.main.Idle();
         MusicManager.main.PlayMusic(MusicTrackType.Main);
     }
 
@@ -79,6 +90,8 @@ public class DayNightManager : MonoBehaviour
         Debug.Log("morning ritual started");
         eatFishCount = 0;
         isMorningRitual = true;
+        Hunger.main.ShowHunger(eatFishTarget);
+        Hunger.main.Show();
     }
 
     public void DayStarted()
@@ -86,6 +99,7 @@ public class DayNightManager : MonoBehaviour
         isNight = false;
         FishPoolManager.main.StartSpawning();
         dayStarted = true;
+        eatFishTarget += 1;
     }
     public void AddTimeStep()
     {
@@ -131,6 +145,7 @@ public class DayNightManager : MonoBehaviour
             {
                 zoomStarted = true;
                 CameraZoom.main.ZoomOutToSky();
+                Hunger.main.Hide();
                 initialized = false;
                 timer = 0f;
             }
@@ -146,15 +161,19 @@ public class DayNightManager : MonoBehaviour
                 {
                     timer = 0f;
                     Debug.Log("you died of hunger!");
+                    PlayerAnimator.main.PlayDeath();
                     isMorningRitual = false;
                     isOver = true;
                     return;
                 }
+                SoundManager.main.PlaySound(GameSoundType.Munch);
                 eatFishCount += 1;
+                Hunger.main.ShowHunger(eatFishTarget - eatFishCount);
                 Debug.Log($"Fishes eaten: {eatFishCount}");
                 if (eatFishCount >= eatFishTarget)
                 {
                     isMorningRitual = false;
+                    Hunger.main.Hide();
                     DayStarted();
                 }
                 timer = 0f;

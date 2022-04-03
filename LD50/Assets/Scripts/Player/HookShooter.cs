@@ -39,6 +39,7 @@ public class HookShooter : MonoBehaviour
         {
             hook = Instantiate(hookPrefab, transform.position, Quaternion.identity);
         }
+        SoundManager.main.PlaySound(GameSoundType.Shoot);
         hook.transform.position = transform.position;
         hook.Shoot(pos);
         isShooting = true;

@@ -29,6 +29,11 @@ public class PlayerAnimator : MonoBehaviour
 
     public void TurnSouth() { }
 
+    public void PlayDeath()
+    {
+        animator.Play("die");
+    }
+
     public void Walk()
     {
         animator.Play("walk");

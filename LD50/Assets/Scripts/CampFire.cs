@@ -40,9 +40,12 @@ public class CampFire : MonoBehaviour
             rWood.Activate();
         }
         wood += 1;
+        SoundManager.main.PlaySound(GameSoundType.PickupWood);
         if (wood >= requiredWoods.Count)
         {
             DayNightManager.main.TransitionToNight();
+            SoundManager.main.PlaySound(GameSoundType.FireStart);
+            SoundManager.main.PlaySoundLoop(GameSoundType.FireLoop);
             fire.SetActive(true);
         }
     }
@@ -55,6 +58,7 @@ public class CampFire : MonoBehaviour
             if (timer >= extinguishDelay)
             {
                 Extinguish();
+                SoundManager.main.PlaySound(GameSoundType.FireEnd);
                 timer = 0f;
             }
         }
@@ -72,6 +76,7 @@ public class CampFire : MonoBehaviour
         {
             rWood.Deactivate();
         }
+        SoundManager.main.PauseLoop(GameSoundType.FireLoop);
         wood = 0;
         requiredWoodObj.SetActive(false);
         fire.SetActive(false);

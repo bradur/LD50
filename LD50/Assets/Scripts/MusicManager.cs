@@ -9,6 +9,16 @@ public class MusicManager : MonoBehaviour
     private void Awake()
     {
         main = this;
+        foreach (MusicTrack track in tracks)
+        {
+            if (track.Source == null)
+            {
+                track.Source = Instantiate(musicSourcePrefab);
+                track.Source.clip = track.Clip;
+                track.Source.volume = 0;
+                track.Source.Play();
+            }
+        }
     }
     private List<AudioFade> fades = new List<AudioFade>();
 
@@ -28,19 +38,6 @@ public class MusicManager : MonoBehaviour
 
     MusicTrack currentTrack;
 
-    private void Start()
-    {
-        foreach (MusicTrack track in tracks)
-        {
-            if (track.Source == null)
-            {
-                track.Source = Instantiate(musicSourcePrefab);
-                track.Source.clip = track.Clip;
-                track.Source.volume = 0;
-                track.Source.Play();
-            }
-        }
-    }
 
     public void PlayMusic(MusicTrackType type)
     {

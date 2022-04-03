@@ -12,6 +12,7 @@ public class WoodCollider : MonoBehaviour
             bool canCarry = PlayerInventory.main.GetWood(transform.position);
             if (canCarry)
             {
+                SoundManager.main.PlaySound(GameSoundType.PickupWood);
                 GetComponentInParent<DriftWood>().Kill();
             }
         }

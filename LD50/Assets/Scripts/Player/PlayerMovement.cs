@@ -101,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
             isWalking = true;
             //PlayerFishingControl.main.StopFishing();
             PlayerAnimator.main.Walk();
+            SoundManager.main.PlaySoundLoop(GameSoundType.Walk);
         }
 
         if (movingLeft)
@@ -121,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
             isWalking = false;
             rb.velocity = Vector2.zero;
             PlayerAnimator.main.IdleFromWalk();
+            SoundManager.main.PauseLoop(GameSoundType.Walk);
         }
     }
 
