@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isWalking)
         {
             isWalking = true;
-            PlayerFishingControl.main.StopFishing();
+            //PlayerFishingControl.main.StopFishing();
             PlayerAnimator.main.Walk();
         }
 
@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // 2d top down movement
         movement = new Vector2(moveHorizontal, moveVertical);
-        if (MovementKeyIsPressed())
+        if (!PlayerFishingControl.main.IsFishing && MovementKeyIsPressed())
         {
             Walk();
         }

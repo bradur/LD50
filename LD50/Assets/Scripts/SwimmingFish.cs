@@ -8,11 +8,14 @@ public class SwimmingFish : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private SpriteRenderer fgSprite;
+    [SerializeField]
+    private SpriteRenderer formlessSprite;
 
     [SerializeField]
     private float distanceFromCenter = 10f;
 
-    private float speed = 5f;
+    private float speedInside = 5f;
+    private float speedOutside = 2f;
     /*
         [SerializeField]
         private float maxLifeTime = 10f;*/
@@ -27,13 +30,16 @@ public class SwimmingFish : MonoBehaviour
     public void Initialize(Fish spawn)
     {
         this.fish = spawn;
-        speed = spawn.Speed;
+        speedInside = spawn.SpeedInPool;
+        speedOutside = spawn.SpeedOutSidePool;
         isSwimming = false;
         container.SetActive(true);
         rb = spriteRenderer.GetComponent<Rigidbody2D>();
-        spriteRenderer.sprite = spawn.sprite;
-        fgSprite.sprite = spawn.fgSprite;
-        fgSprite.color = spawn.fgColor;
+        rb.transform.localScale = new Vector2(spawn.Visual.Scale, spawn.Visual.Scale);
+        spriteRenderer.sprite = spawn.Visual.sprite;
+        formlessSprite.sprite = spawn.Visual.fgSprite;
+        fgSprite.sprite = spawn.Visual.fgSprite;
+        fgSprite.color = spawn.Visual.fgColor;
         spriteRenderer.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
     }
 
@@ -53,7 +59,7 @@ public class SwimmingFish : MonoBehaviour
         Debug.Log($"Poolpos [{target}] spawnPos: [{spawnPos}] newPos:[{newPos}]");
         rb.transform.position = newPos;
         rb.transform.right = target - newPos;
-        rb.AddForce(rb.transform.right * speed, ForceMode2D.Impulse);
+        rb.AddForce(rb.transform.right * speedOutside, ForceMode2D.Impulse);
     }
 
     private void Update()
@@ -68,15 +74,25 @@ public class SwimmingFish : MonoBehaviour
         }
     }
 
-    public void TriggerEnter(Collider2D other)
+    public void TriggerEnter(Collider2D other, bool enteredPool)
     {
-
+        if (enteredPool)
+        {
+            rb.velocity *= (speedInside / speedOutside);
+            return;
+        }
         HookProjectile projectile = other.gameObject.GetComponentInParent<HookProjectile>();
         if (projectile != null)
         {
             projectile.Kill();
             Kill();
         }
+    }
+
+    public void ExitPool()
+    {
+        //ExitPool
+        rb.velocity *= (speedOutside / speedInside);
     }
 
     public void Kill()

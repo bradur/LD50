@@ -44,14 +44,17 @@ TagManager:
   - name: Water
     uniqueID: 597150263
     locked: 0
+  - name: Fishes
+    uniqueID: 2777380797
+    locked: 0
+  - name: FgWater
+    uniqueID: 1295878933
+    locked: 0
   - name: Island
     uniqueID: 313711959
     locked: 0
   - name: Foreground
     uniqueID: 1000755595
-    locked: 0
-  - name: Fishes
-    uniqueID: 2777380797
     locked: 0
   - name: UI
     uniqueID: 170411141

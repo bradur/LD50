@@ -20,11 +20,14 @@ public class FishSpawner : MonoBehaviour
             return;
         }
         this.pool = pool;
-        config.Spawn.Init();
+        config.Init();
     }
 
     public void StartSpawning()
     {
+        spawnInterval = config.GetRandomIntervalInRange();
+        Debug.Log($"Spawn interval now: {spawnInterval}");
+        spawnTimer = 0;
         isSpawning = true;
     }
 
@@ -58,6 +61,10 @@ public class FishSpawner : MonoBehaviour
         {
             pool.DryOut();
         }
+        else
+        {
+            StartSpawning();
+        }
     }
 
     private void SpawnAFish()
@@ -66,7 +73,7 @@ public class FishSpawner : MonoBehaviour
         if (fish == null)
         {
             Debug.Log("out of fish");
-            isSpawning = false;
+            StopSpawning();
             noMoreFish = true;
             if (spawnedFish == 0)
             {
@@ -78,6 +85,7 @@ public class FishSpawner : MonoBehaviour
         SwimmingFish swimmingFish = Instantiate(swimmingFishPrefab, pool.transform.position, Quaternion.identity);
         swimmingFish.Initialize(fish);
         swimmingFish.SwimThrough(pool, this);
+        StopSpawning();
         Debug.Log($"Spawned a fish: {fish.Name} at {swimmingFish.transform.position}");
     }
 }

@@ -13,13 +13,18 @@ public class HookProjectile : MonoBehaviour
     private float maxLifeTime = 8f;
     private float lifeTimer = 0f;
 
+    [SerializeField]
+    private float maxDistance = 10f;
+
     // Start is called before the first frame update
     private bool isShot = false;
     private bool isPast = true;
     private Vector2 targetPos;
+    private Vector2 startingPos;
     public void Shoot(Vector2 target)
     {
         targetPos = target;
+        startingPos = rb.transform.position;
         rb.gameObject.SetActive(true);
 
         rb.transform.right = new Vector3(target.x, target.y, 0f) - rb.transform.position;
@@ -38,12 +43,14 @@ public class HookProjectile : MonoBehaviour
         if (isShot)
         {
             lifeTimer += Time.deltaTime;
-            if (lifeTimer >= maxLifeTime)
+            bool maxDistReached = Vector2.Distance(startingPos, rb.transform.position) > maxDistance;
+            if (maxDistReached || lifeTimer >= maxLifeTime)
             {
+                Debug.Log($"hook died cause of dist: {maxDistReached}");
                 Kill();
                 return;
             }
-            float dist = Vector2.Distance(rb.transform.position, targetPos);
+            /*float dist = Vector2.Distance(rb.transform.position, targetPos);
             if (isPast)
             {
                 if (dist > 2f)
@@ -55,7 +62,7 @@ public class HookProjectile : MonoBehaviour
             else if (dist < 0.1f)
             {
                 isPast = true;
-            }
+            }*/
         }
     }
 

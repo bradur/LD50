@@ -356,10 +356,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 119788890871297288, guid: 10eb9485de396994d8fe990820814f24, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 119788891886584122, guid: 10eb9485de396994d8fe990820814f24, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -407,6 +403,42 @@ PrefabInstance:
     - target: {fileID: 119788891886584123, guid: 10eb9485de396994d8fe990820814f24, type: 3}
       propertyPath: m_Name
       value: World
+      objectReference: {fileID: 0}
+    - target: {fileID: 119788892617032196, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 119788892617032196, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388649815209748473, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_Color.b
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388649815209748473, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5825149
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388649815209748473, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_Color.r
+      value: 0.09611962
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388649815209748473, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753970098746081155, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1281375142, guid: e0099593ca8ab3548841a088dafeba88, type: 3}
+    - target: {fileID: 7753970098746081155, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_FrontSortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753970098746081155, guid: 10eb9485de396994d8fe990820814f24, type: 3}
+      propertyPath: m_FrontSortingLayerID
+      value: 597150263
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10eb9485de396994d8fe990820814f24, type: 3}

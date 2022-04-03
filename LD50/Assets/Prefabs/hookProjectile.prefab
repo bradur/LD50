@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2609024773114308790}
-  projectilespeed: 8
+  projectilespeed: 13
   maxLifeTime: 3
+  maxDistance: 13
 --- !u!1 &7629632221158217201
 GameObject:
   m_ObjectHideFlags: 0

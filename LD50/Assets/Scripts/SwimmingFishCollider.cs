@@ -11,7 +11,8 @@ public class SwimmingFishCollider : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("CanFish"))
+        bool enteredPool = other.gameObject.layer == LayerMask.NameToLayer("CanFish");
+        if (enteredPool)
         {
             Debug.Log("Fish entered pool");
             isFishable = true;
@@ -24,7 +25,7 @@ public class SwimmingFishCollider : MonoBehaviour
         {
             swimmingFish = GetComponentInParent<SwimmingFish>();
         }
-        swimmingFish.TriggerEnter(other);
+        swimmingFish.TriggerEnter(other, enteredPool);
         Debug.Log(other.name + " trigger");
     }
 
@@ -33,6 +34,7 @@ public class SwimmingFishCollider : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("CanFish"))
         {
             Debug.Log("Fish exited pool");
+            swimmingFish.ExitPool();
             isFishable = false;
         }
     }

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 20
   m_Sprite: {fileID: 2092828516, guid: 6260bd6da2cc618499e91b5d909f56b0, type: 3}
-  m_Color: {r: 0, g: 0.29285693, b: 0.5, a: 0.6745098}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6745098}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -215,7 +215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5482523702494475645}
   fgSprite: {fileID: 1617701731962052376}
-  distanceFromCenter: 7.66
+  formlessSprite: {fileID: 3110492173356873529}
+  distanceFromCenter: 5
   container: {fileID: 5482523701958652505}
 --- !u!1 &5482523701958652505
 GameObject:

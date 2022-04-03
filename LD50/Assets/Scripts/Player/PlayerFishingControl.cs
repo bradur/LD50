@@ -128,12 +128,12 @@ public class PlayerFishingControl : MonoBehaviour
                 CastRod();
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isFishing)
             {
                 HookShooter.main.CancelShot();
             }
-        }
+        }*/
     }
 }

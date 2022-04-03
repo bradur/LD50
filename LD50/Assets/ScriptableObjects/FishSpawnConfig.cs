@@ -9,6 +9,31 @@ public class FishSpawnConfig : ScriptableObject
     [SerializeField]
     private FishSpawn spawn;
     public FishSpawn Spawn { get { return spawn; } }
+
+    [SerializeField]
+    [Range(0.5f, 5f)]
+    private float intervalMin = 1f;
+    [SerializeField]
+    [Range(2f, 10f)]
+    private float intervalMax = 3f;
+
+    public float GetRandomIntervalInRange()
+    {
+        return Random.Range(intervalMin, intervalMax);
+    }
+
+    public void Init()
+    {
+        spawn.Init(this);
+    }
+
+    [SerializeField]
+    private List<FishVisual> fishVisuals;
+
+    public FishVisual GetVisual(FishType type)
+    {
+        return fishVisuals.FirstOrDefault(x => x.Type == type);
+    }
 }
 
 [System.Serializable]
@@ -16,11 +41,11 @@ public class FishSpawn
 {
     public List<Fish> fishes;
 
-    public void Init()
+    public void Init(FishSpawnConfig config)
     {
         foreach (Fish fish in fishes)
         {
-            fish.Init();
+            fish.Init(config.GetVisual(fish.Type));
         }
     }
     public Fish GetRandomFish()
@@ -42,14 +67,15 @@ public class Fish
 {
     public string Name;
     public int Amount;
-    public Sprite sprite;
-    public Sprite fgSprite;
-    public Color fgColor;
-    public float Speed = 2f;
-
+    public float SpeedInPool = 2f;
+    public float SpeedOutSidePool = 1f;
+    public FishType Type;
+    private FishVisual visual;
+    public FishVisual Visual { get { return visual; } }
     private int spawnCount = 0;
-    public void Init()
+    public void Init(FishVisual visual)
     {
+        this.visual = visual;
         spawnCount = 0;
     }
     public bool CanSpawn()
@@ -60,4 +86,22 @@ public class Fish
     {
         spawnCount += 1;
     }
+}
+
+[System.Serializable]
+public class FishVisual
+{
+
+    public FishType Type;
+    public Sprite sprite;
+    public Sprite fgSprite;
+    public Color fgColor;
+    [Range(0.2f, 2f)]
+    public float Scale = 1f;
+}
+
+public enum FishType
+{
+    Small,
+    Big
 }

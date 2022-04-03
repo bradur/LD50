@@ -58,6 +58,8 @@ public class FishPool : MonoBehaviour
     {
         Debug.Log("Fish have gone!");
         Camera.main.GetComponent<FollowTarget>().SetTarget(PlayerMovement.main.transform);
+        //StopFishing();
+        PlayerFishingControl.main.StopFishing();
         Destroy(gameObject);
     }
 }
