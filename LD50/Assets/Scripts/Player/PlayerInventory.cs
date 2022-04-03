@@ -17,6 +17,15 @@ public class PlayerInventory : MonoBehaviour
     private PlayerInventoryItem woodItem;
 
     private List<PlayerInventoryItem> items = new List<PlayerInventoryItem>();
+
+    public void AddItem(Color fgColor, Sprite fgSprite, Sprite bgSprite)
+    {
+        PlayerInventoryItem inventoryItem = Instantiate(prefab, transform);
+
+        inventoryItem.Init(fgColor, fgSprite, bgSprite, 1f, transform, items.Count);
+        items.Add(inventoryItem);
+    }
+
     public void AddFish(Fish fish)
     {
         PlayerInventoryItem inventoryItem = Instantiate(prefab, transform);
@@ -24,6 +33,18 @@ public class PlayerInventory : MonoBehaviour
 
         inventoryItem.Init(visual.fgColor, visual.fgSprite, visual.sprite, visual.Scale, transform, items.Count);
         items.Add(inventoryItem);
+    }
+
+    public bool UseFish()
+    {
+        if (items.Count > 0)
+        {
+            PlayerInventoryItem item = items[0];
+            items.Remove(item);
+            item.Kill();
+            return true;
+        }
+        return false;
     }
 
     public bool GetWood(Vector3 pos)
