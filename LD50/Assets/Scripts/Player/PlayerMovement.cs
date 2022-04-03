@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     //private float minMagnitude = 0.4f;
 
-
+    private bool moveKeyPressed = false;
     void Update()
     {
         // 2d top down movement
@@ -37,6 +37,17 @@ public class PlayerMovement : MonoBehaviour
         // rotate towards mouse
         mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        moveKeyPressed = MovementKeyIsPressed();
+    }
+
+    void FixedUpdate()
+    {
+        ApplyMovement();
+    }
+
+    void LateUpdate()
+    {
+
     }
 
     public void TurnRight()
@@ -120,11 +131,11 @@ public class PlayerMovement : MonoBehaviour
             || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow)
         );
     }
-    private void FixedUpdate()
+    private void ApplyMovement()
     {
         // 2d top down movement
         movement = new Vector2(moveHorizontal, moveVertical);
-        if (!PlayerFishingControl.main.IsFishing && MovementKeyIsPressed())
+        if (!DayNightManager.main.IsNight && !PlayerFishingControl.main.IsFishing && moveKeyPressed)
         {
             Walk();
         }

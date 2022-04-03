@@ -122,8 +122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fgRend: {fileID: 2907452743745683693}
   bgRend: {fileID: 2907452744606404575}
+  rb2d: {fileID: 2907452743241880180}
   joint: {fileID: 2907452743241880181}
   container: {fileID: 2907452743241880182}
+  driftPrefab: {fileID: 4353450276537922337, guid: d2381106d6cf53a4ba694f04a6efc46d, type: 3}
 --- !u!1 &2907452743745683695
 GameObject:
   m_ObjectHideFlags: 0

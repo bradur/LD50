@@ -22,6 +22,7 @@ public class CursorManager : MonoBehaviour
     private CursorType defaultCursorType;
 
 
+    private Vector2 cachedMousePos;
     void Start()
     {
         Show(defaultCursorType);
@@ -55,12 +56,25 @@ public class CursorManager : MonoBehaviour
         {
             Show(CursorType.Default);
         }
+        CacheMousePos();
+        SetCursorPos();
     }
 
-    void LateUpdate()
+    private void CacheMousePos()
     {
-        transform.position = mousePos;
+        cachedMousePos = mousePos;
     }
+
+    private void SetCursorPos()
+    {
+        transform.position = cachedMousePos;
+    }
+
+    private void LateUpdate()
+    {
+
+    }
+
     private Vector2 mousePos
     {
         get

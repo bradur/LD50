@@ -44,7 +44,7 @@ public class PlayerFishingControl : MonoBehaviour
             if (currentFishPool != null)
             {
                 currentFishPool.StartFishing();
-                cameraFollow.SetTarget(currentFishPool.transform, 0.2f);
+                cameraFollow.SetTarget(currentFishPool.transform, 0.2f, UpdateType.Late);
                 CameraZoom.main.ZoomIn();
             }
             else

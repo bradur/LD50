@@ -8,17 +8,17 @@ public class FishSpawner : MonoBehaviour
     [SerializeField]
     private SwimmingFish swimmingFishPrefab;
 
-    [SerializeField]
-    private FishSpawnConfig config;
+    FishSpawnConfig config;
     FishPool pool;
     private bool isSpawning = false;
     private bool initialized = false;
-    public void Initialize(FishPool pool)
+    public void Initialize(FishPool pool, FishSpawnConfig config)
     {
         if (initialized)
         {
             return;
         }
+        this.config = config;
         this.pool = pool;
         config.Init();
     }

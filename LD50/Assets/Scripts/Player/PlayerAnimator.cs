@@ -32,7 +32,7 @@ public class PlayerAnimator : MonoBehaviour
     public void Walk()
     {
         animator.Play("walk");
-        Debug.Log("walk");
+        //Debug.Log("walk");
     }
 
     public void IdleFromWalk()
@@ -54,7 +54,7 @@ public class PlayerAnimator : MonoBehaviour
     public void CastRod()
     {
         animator.Play("swingRod");
-        Debug.Log("swingRod");
+        //Debug.Log("swingRod");
     }
 
 
@@ -66,6 +66,6 @@ public class PlayerAnimator : MonoBehaviour
     public void Idle()
     {
         animator.SetTrigger("idle");
-        Debug.Log("idle");
+        //        Debug.Log("idle");
     }
 }

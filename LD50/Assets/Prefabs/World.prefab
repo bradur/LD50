@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 119788890763531315}
   - component: {fileID: 119788890763531312}
+  - component: {fileID: 8783296522048208082}
   m_Layer: 0
-  m_Name: Global Light 2D
+  m_Name: DayNightManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,6 +111,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &8783296522048208082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119788890763531313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51df85431d15d7e499d85631d563e5fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light2D: {fileID: 119788890763531312}
+  intensityStep: -0.1
+  intensityStepDuration: 1
+  nightTransitionDuration: 10
+  nightIntensity: 0
+  dayTransitionDuration: 3
+  nightDuration: 5
 --- !u!1 &119788891466177213
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +266,8 @@ MonoBehaviour:
   followX: 1
   followY: 1
   followZ: 0
+  adjust: 0
+  apply: 1
 --- !u!114 &5152353824739923157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,9 +517,116 @@ Transform:
   - {fileID: 8477396905610040352}
   - {fileID: 119788890871297287}
   - {fileID: 7700765914190359179}
+  - {fileID: 9055353720601064824}
+  - {fileID: 3506371735493401275}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1059897967619593769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9055353720601064824}
+  - component: {fileID: 6425986177295874826}
+  m_Layer: 0
+  m_Name: poolSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9055353720601064824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059897967619593769}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 119788891886584122}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6425986177295874826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059897967619593769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6dc637866341f249a5bab502b1e8e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishPoolPrefab: {fileID: 1002919025347132505, guid: 08d213d47abb3bd4fa69d065907e5cfe, type: 3}
+  distanceFromIsland: 17.4
+  target: {fileID: 119788891661307311}
+  possiblePoolSprite:
+  - {fileID: 1826467220, guid: 9d976526826dc0841bb77cee97fe0c4a, type: 3}
+  - {fileID: -1281375142, guid: 9d976526826dc0841bb77cee97fe0c4a, type: 3}
+  - {fileID: 207050251, guid: 9d976526826dc0841bb77cee97fe0c4a, type: 3}
+  - {fileID: -993285199, guid: 9d976526826dc0841bb77cee97fe0c4a, type: 3}
+  possibleConfigs:
+  - {fileID: 11400000, guid: cf61745daa4794e469f7ba51440726b5, type: 2}
+  minDistance: 5
+  spawnInterval: 5
+--- !u!1 &5870161209108396304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3506371735493401275}
+  - component: {fileID: 4383434065584137200}
+  m_Layer: 0
+  m_Name: woodSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3506371735493401275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5870161209108396304}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 119788891886584122}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4383434065584137200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5870161209108396304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97c22b26b1e3a947bbd690ee97ae6f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  driftWoodPrefab: {fileID: 4353450276537922337, guid: d2381106d6cf53a4ba694f04a6efc46d, type: 3}
+  distanceFromIsland: 8.28
+  target: {fileID: 119788891661307311}
+  spawnInterval: 5
+  minDistance: 5
 --- !u!1 &6110132048231553815
 GameObject:
   m_ObjectHideFlags: 0

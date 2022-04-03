@@ -5,8 +5,6 @@ using UnityEngine;
 public class FishPool : MonoBehaviour
 {
 
-    [SerializeField]
-    private List<Sprite> possiblePoolSprite;
 
     [SerializeField]
     private FishPoolCollider poolCollider;
@@ -19,25 +17,21 @@ public class FishPool : MonoBehaviour
 
     [SerializeField]
     private Animator animator;
+    FishSpawnConfig config;
 
-    private void Start()
+
+    public void Initialize(Sprite poolSprite, FishSpawnConfig config, Vector2 pos)
     {
-        Initialize();
-    }
-    public void Initialize()
-    {
-        Sprite poolSprite = GetRandomPoolSprite();
+        this.config = config;
+        //Sprite poolSprite = GetRandomPoolSprite();
         poolCollider.Initialize(poolSprite);
+        transform.position = pos;
     }
 
-    private Sprite GetRandomPoolSprite()
-    {
-        return possiblePoolSprite[Random.Range(0, possiblePoolSprite.Count)];
-    }
 
     public void StartFishing()
     {
-        fishSpawner.Initialize(this);
+        fishSpawner.Initialize(this, config);
         animator.SetTrigger("fishing");
         fishSpawner.StartSpawning();
     }
@@ -60,6 +54,8 @@ public class FishPool : MonoBehaviour
         Camera.main.GetComponent<FollowTarget>().SetTarget(PlayerMovement.main.transform);
         //StopFishing();
         PlayerFishingControl.main.StopFishing();
+        DayNightManager.main.AddTimeStep();
+        FishPoolManager.main.FishPoolDie();
         Destroy(gameObject);
     }
 }
