@@ -21,6 +21,7 @@ public class Hunger : MonoBehaviour
 
     public void Show()
     {
+        transform.position = PlayerMovement.main.RB.transform.position;
         animator.Play("hungerShow");
     }
 

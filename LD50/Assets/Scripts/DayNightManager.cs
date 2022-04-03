@@ -60,6 +60,8 @@ public class DayNightManager : MonoBehaviour
     private Color foodColor = Color.red;
     private bool initialized = false;
 
+    private int campfiresMade = 0;
+
     public void AddStartingFood()
     {
         for (int index = 0; index < originalFishTarget; index += 1)
@@ -80,6 +82,7 @@ public class DayNightManager : MonoBehaviour
         eatFishCount = 0;
         initialized = true;
         zoomStarted = false;
+        campfiresMade = 0;
         isOver = false;
         PlayerAnimator.main.Idle();
         MusicManager.main.PlayMusic(MusicTrackType.Main);
@@ -100,6 +103,7 @@ public class DayNightManager : MonoBehaviour
         FishPoolManager.main.StartSpawning();
         dayStarted = true;
         eatFishTarget += 1;
+        campfiresMade += 1;
     }
     public void AddTimeStep()
     {
@@ -144,7 +148,7 @@ public class DayNightManager : MonoBehaviour
             if (timer >= deathDuration)
             {
                 zoomStarted = true;
-                CameraZoom.main.ZoomOutToSky();
+                CameraZoom.main.ZoomOutToSky(campfiresMade);
                 Hunger.main.Hide();
                 initialized = false;
                 timer = 0f;

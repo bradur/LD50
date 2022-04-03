@@ -66,14 +66,14 @@ public class CameraZoom : MonoBehaviour
         duration = zoomDuration;
     }
 
-    public void ZoomOutToSky()
+    public void ZoomOutToSky(int campFires)
     {
         originalSize = Camera.main.orthographicSize;
         timer = 0f;
         targetSize = skySize;
         zooming = true;
         duration = skyDur;
-        StartButton.main.Enable();
+        StartButton.main.Enable(campFires);
     }
 
     // Update is called once per frame
