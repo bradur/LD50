@@ -25,11 +25,19 @@ public class CameraZoom : MonoBehaviour
     private bool zooming = false;
     private bool zoomApplied = true;
     private bool theStart = false;
+
+    private float bufferDuration = 2f;
+    private bool isBuffer = false;
     void Start()
     {
         targetSize = minSize;
         zoom = minSize;
+    }
+
+    public void StartGame()
+    {
         ZoomInStart();
+
     }
 
     private void ZoomInStart()
@@ -41,6 +49,7 @@ public class CameraZoom : MonoBehaviour
     public void ZoomIn()
     {
         originalSize = Camera.main.orthographicSize;
+        zoom = originalSize;
         timer = 0f;
         targetSize = maxSize;
         zooming = true;
@@ -50,6 +59,7 @@ public class CameraZoom : MonoBehaviour
     public void ZoomOut()
     {
         originalSize = Camera.main.orthographicSize;
+        zoom = originalSize;
         timer = 0f;
         targetSize = minSize;
         zooming = true;
@@ -68,6 +78,17 @@ public class CameraZoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isBuffer)
+        {
+            timer += Time.deltaTime;
+            if (timer >= bufferDuration)
+            {
+                isBuffer = false;
+                timer = 0f;
+                DayNightManager.main.Init();
+            }
+            return;
+        }
         if (zooming)
         {
             timer += Time.deltaTime;
@@ -77,8 +98,10 @@ public class CameraZoom : MonoBehaviour
                 zoom = targetSize;
                 if (theStart)
                 {
-                    DayNightManager.main.Init();
+                    timer = 0f;
+                    isBuffer = true;
                     theStart = false;
+                    DayNightManager.main.AddStartingFood();
                 }
             }
             else

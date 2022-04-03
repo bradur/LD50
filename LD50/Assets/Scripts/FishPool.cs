@@ -52,6 +52,7 @@ public class FishPool : MonoBehaviour
     {
         Debug.Log("Fish have gone!");
         Camera.main.GetComponent<FollowTarget>().SetTarget(PlayerMovement.main.transform);
+        MusicManager.main.PlayMusic(MusicTrackType.Main);
         //StopFishing();
         PlayerFishingControl.main.StopFishing();
         DayNightManager.main.AddTimeStep();

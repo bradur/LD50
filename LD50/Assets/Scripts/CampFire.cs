@@ -72,6 +72,7 @@ public class CampFire : MonoBehaviour
         {
             rWood.Deactivate();
         }
+        wood = 0;
         requiredWoodObj.SetActive(false);
         fire.SetActive(false);
     }

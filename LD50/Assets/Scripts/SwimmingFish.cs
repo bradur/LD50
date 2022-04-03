@@ -13,6 +13,7 @@ public class SwimmingFish : MonoBehaviour
 
     [SerializeField]
     private float distanceFromCenter = 10f;
+    private float buffer = 2f;
 
     private float speedInside = 5f;
     private float speedOutside = 2f;
@@ -66,7 +67,7 @@ public class SwimmingFish : MonoBehaviour
     {
         if (isSwimming)
         {
-            if (Vector2.Distance(rb.transform.position, target) > distanceFromCenter)
+            if (Vector2.Distance(rb.transform.position, target) > (distanceFromCenter + buffer))
             {
                 Debug.Log("Kill cos out");
                 Kill();

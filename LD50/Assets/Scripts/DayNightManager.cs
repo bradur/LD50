@@ -56,20 +56,22 @@ public class DayNightManager : MonoBehaviour
     [SerializeField]
     private Color foodColor = Color.red;
     private bool initialized = false;
-    void Start()
+
+    public void AddStartingFood()
     {
-        dayIntensity = light2D.intensity;
         PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
         PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
         PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
         PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
         PlayerInventory.main.AddItem(foodColor, foodSprite, foodSprite);
-        //DayStarted();
     }
 
     public void Init()
     {
+        dayIntensity = light2D.intensity;
+
         initialized = true;
+        MusicManager.main.PlayMusic(MusicTrackType.Main);
     }
 
     public void StartMorningRitual()

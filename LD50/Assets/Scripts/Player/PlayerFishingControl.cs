@@ -45,6 +45,7 @@ public class PlayerFishingControl : MonoBehaviour
             {
                 currentFishPool.StartFishing();
                 cameraFollow.SetTarget(currentFishPool.transform, 0.2f, UpdateType.Late);
+                MusicManager.main.PlayMusic(MusicTrackType.Water);
                 CameraZoom.main.ZoomIn();
             }
             else
